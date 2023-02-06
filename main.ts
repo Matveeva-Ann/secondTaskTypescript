@@ -4,12 +4,12 @@
 // При кліку на Cenzor перевіряється чи є в textarea заборонене слово, якщо так його заміняє на *, причому на ту кількість яка довжина слова
 // Якщо textarea порожня виводити повыдолення про заповнення поля
 
-const badWords: any = document.querySelector(".badWords")?.children[1];
-const inputText: any = document.querySelector(".input-text");
-const btnAdd: any = document.querySelector(".btn-Add");
-const btnReset: any = document.querySelector(".btn-Reset");
-const cenzor: any = document.querySelector(".cenzor");
-const textareaFild: any = document.querySelector(".textarea-fild");
+const badWords = document.querySelector(".badWords")?.children[1] as HTMLBodyElement;
+const inputText = document.querySelector(".input-text") as HTMLInputElement;
+const btnAdd: any = document.querySelector(".btn-Add") as HTMLButtonElement;
+const btnReset: any = document.querySelector(".btn-Reset") as HTMLButtonElement;
+const cenzor: any = document.querySelector(".cenzor") as HTMLButtonElement;
+const textareaFild: any = document.querySelector(".textarea-fild") as HTMLInputElement;
 let arrBadWords: string[] = [];
 
 btnAdd.addEventListener("click", function () {

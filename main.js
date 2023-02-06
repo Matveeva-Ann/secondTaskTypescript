@@ -61,6 +61,7 @@ function createStars(elem, arr) {
     const indexElem = arr.indexOf(elem);
     arr.splice(indexElem, 1, "*".repeat(lengthElem));
 }
+// або
 // cenzor.addEventListener("click", function (event) {
 //   missingValue(textareaFild);
 //   event.preventDefault();
