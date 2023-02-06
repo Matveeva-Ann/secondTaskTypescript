@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.conteiner{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.header{
+    width: 100%;
+    min-height: 70px;
+    padding: 15px;
+    text-align: center;
+    background-color:#FFEBCD;
+    border-bottom: 1px solid #FFE4C4;
+    box-shadow: 0 0 15px #F5DEB3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+    font-weight: 600;
+}
+.content{
+    min-width: 600px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:#FFEBCD;
+    border-radius: 7px;
+    padding: 20px;
+}
+.badWords{
+    margin: 10px;
+    width: 100%;
+}
+.text-bold{
+   font-weight: 700;
+   margin-right: 10px;
+   font-size: 19px;
+}
+.badWords-text{
+    color: red;
+    font-size: 19px;
+}
+.formElements{
+    width: 100%;
+    min-height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.addWord{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+.input-text{
+    width: calc((80%-20px));
+    min-height: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 2px gray;
+}
+.input-text:focus{
+    outline: none;
+}
+.btn-Add, .btn-Reset{
+    min-width: 70px;
+    height: 30px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 0 5px gray;
+}
+.btn-Add{
+    background-color: #BA55D3;
+}
+.btn-Add:hover{
+    background-color: #9932CC;
+}
+.btn-Reset{
+    background-color: #FF69B4;
+}
+.btn-Reset:hover{
+    background-color: #FF1493;
+}
+.textarea-fild{
+    width: 100%;
+    height: 150px;
+    resize: none;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 2px gray;
+    padding: 10px;
+}
+.textarea-fild:focus{
+    outline: none;
+}
+.cenzor{
+    width: 100%;
+    min-height: 30px;
+    padding: 5px;
+    background-color: #F4A460;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+}
+.cenzor:hover{
+    background-color: #e69045;
+}
+.red{
+    border: 1px solid red;
+    box-shadow: 0 0 5px red;
+}
