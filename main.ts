@@ -16,31 +16,33 @@ btnAdd.addEventListener("click", function () {
   missingValue(inputText);
   if (inputText.value !== "") {
     inputText.classList.remove("red");
-    arrBadWords.push(inputText.value.trim());
-    badWords.textContent = "";
-    for (const elem of arrBadWords) {
-      badWords.textContent === ""
-        ? (badWords.textContent += elem)
-        : (badWords.textContent += ", " + elem);
-    }
+    upDataBadWord(inputText.value.trim());
   }
   inputText.value = "";
 });
 
+function upDataBadWord (newValue?: string){
+  if (newValue){
+    arrBadWords.push(newValue);
+  } else{
+    arrBadWords = []
+  }
+  badWords.textContent = arrBadWords.join(', ');
+}
+
 btnReset.addEventListener("click", function () {
-  badWords.textContent = "";
   textareaFild.value = "";
-  arrBadWords = [];
+  upDataBadWord();
   inputText.classList.remove("red");
+  textareaFild.classList.remove("red");
 });
 
 function missingValue(elem: any): void {
   elem.value === "" ? elem.classList.add("red") : elem.classList.remove("red");
 }
 
-cenzor.addEventListener("click", function (event) {
+cenzor.addEventListener("click", function () {
   missingValue(textareaFild);
-  event.preventDefault();
   let arrText: string[] = textareaFild.value.split(" ");
   for (const elem of arrText) {
     for (let i = 0; i < arrBadWords.length; i++) {
