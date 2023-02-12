@@ -20,7 +20,7 @@ btnAdd.addEventListener("click", function () {
 });
 function upDataBadWord(newValue) {
     if (newValue) {
-        arrBadWords.push(newValue);
+        arrBadWords.push(newValue.toLocaleLowerCase());
     }
     else {
         arrBadWords = [];
@@ -39,44 +39,22 @@ function missingValue(elem) {
 cenzor.addEventListener("click", function () {
     missingValue(textareaFild);
     let arrText = textareaFild.value.split(" ");
-    for (const elem of arrText) {
-        for (let i = 0; i < arrBadWords.length; i++) {
-            if (elem.includes(",") || elem.includes(".") || elem.includes("!") || elem.includes("?")) {
-                let arr = Array.from(elem);
-                arr.splice(elem.length - 1, 1);
-                const newElem = arr.join('');
-                if (newElem === arrBadWords[i]) {
-                    createStars(elem, arrText);
-                    break;
-                }
+    const lettersRegExp = new RegExp("^[a-zA-Z0-9]+$");
+    const regExp = new RegExp('(^[^a-zA-Z0-9]*)([a-zA-Z0-9]+)([^a-zA-Z0-9]*)$');
+    for (const i in arrText) {
+        const elem = arrText[i];
+        if (!lettersRegExp.test(elem)) {
+            const newElem = elem.replace(regExp, "$2");
+            if (arrBadWords.includes(newElem.toLowerCase())) {
+                arrText[i] = elem.replace(regExp, `$1${createStars(newElem)}$3`);
             }
-            if (elem === arrBadWords[i]) {
-                createStars(elem, arrText);
-                break;
-            }
+        }
+        if (arrBadWords.includes(elem.toLowerCase())) {
+            arrText[i] = createStars(elem);
         }
     }
     textareaFild.value = arrText.join(" ");
 });
-function createStars(elem, arr) {
-    const lengthElem = elem.length;
-    const indexElem = arr.indexOf(elem);
-    arr.splice(indexElem, 1, "*".repeat(lengthElem));
+function createStars(elem) {
+    return "*".repeat(elem.length);
 }
-// або
-// cenzor.addEventListener("click", function (event) {
-//   missingValue(textareaFild);
-//   event.preventDefault();
-//   let text: string = textareaFild.value;
-//   console.log(arrBadWords.length)
-//   for(let i=0; i<arrBadWords.length;i++){
-//     const barWord: string = arrBadWords[i];
-//     console.log(barWord)
-//     console.log(text.includes(barWord))
-//     if (text.includes(barWord)){
-//       console.log(barWord)
-//       text = text.replace(barWord, '*'.repeat(barWord.length))
-//     }
-//   }
-//   textareaFild.value = text;
-// });
